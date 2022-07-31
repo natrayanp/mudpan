@@ -1,0 +1,19 @@
+<!--
+<mudpan-nx-welcome></mudpan-nx-welcome> <router-outlet></router-outlet>
+https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx/introduction/11-adding-ngrx-to-nx-app
+-->
+<div fxLayout="column" fxLayoutAlign="center" style=" height: 100vh;" >
+  <div fxLayout="row" fxLayoutAlign="center" fxFlexFill >
+    <div  fxFlex="1 1 32%" fxFlex.lt-lg="1 1 100%" fxFlexAlign="center" style="width: 100%;">
+      <mat-card>
+        <!--
+        <mat-card-title> <mat-toolbar color="primary"><span fxFlex></span><span>Authenticate</span><span fxFlex></span></mat-toolbar>	</mat-card-title>	
+        -->
+          <ngx-auth-firebaseui 
+                (onSuccess)="printUser($event)"
+                (onError)="printError($event)">
+          </ngx-auth-firebaseui>
+      </mat-card>
+    </div>
+  </div>
+</div>

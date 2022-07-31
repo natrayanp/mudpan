@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/ngx-auth-firebaseui/src",
+  "prefix": "mudpan",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ngx-auth-firebaseui"],
+      "options": {
+        "jestConfig": "libs/ngx-auth-firebaseui/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ngx-auth-firebaseui/**/*.ts",
+          "libs/ngx-auth-firebaseui/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

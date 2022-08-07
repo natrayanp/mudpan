@@ -22,6 +22,8 @@ export class AuthProvidersComponent {
 
   @Input() tosUrl: string;
   @Input() privacyPolicyUrl: string;
+  @Input() tabind: number | null = 0; // 0-login;1-singup;
+
   //dialogRef: MatDialogRef<LegalityDialogComponent>;
 
   themes = Theme;

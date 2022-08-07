@@ -11,7 +11,11 @@ import { MaterialModule } from '@mudpan/material';   // Added
 import { NgxAuthFirebaseUIModule } from '@mudpan/ngx-auth-firebaseui';
 import {  MatDialogRef } from '@angular/material/dialog';
 import { MatPasswordStrengthComponent } from "@angular-material-extensions/password-strength";
+import {environment} from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
+
+export const firebaseKey = environment.config;
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
@@ -19,20 +23,12 @@ import { MatPasswordStrengthComponent } from "@angular-material-extensions/passw
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
     BrowserAnimationsModule,
-    MaterialModule,    
-    // Specify the ngx-auth-firebaseui library as an import
-    NgxAuthFirebaseUIModule.forRoot(
-      {
-        apiKey: "AIzaSyB0Shy7aNh93SuDGFSOky_0Znt4W-nUVd4",
-        authDomain: "natauth-c532d.firebaseapp.com",
-        databaseURL: "https://natauth-c532d.firebaseio.com",
-        projectId: "natauth-c532d",
-        storageBucket: "natauth-c532d.appspot.com",
-        messagingSenderId: "824531220934",        
-      },
+    MaterialModule,        
+    // Specify the ngx-auth-firebaseui library as an import    
+    NgxAuthFirebaseUIModule.forRoot(firebaseKey ,
        () => 'your_app_name_factory',
       {
-        enableFirestoreSync: true, // enable/disable autosync users with firestore
+        enableFirestoreSync: false, // enable/disable autosync users with firestore
         toastMessageOnAuthSuccess: true, // whether to open/show a snackbar message on auth success - default : true
         toastMessageOnAuthError: true, // whether to open/show a snackbar message on auth error - default : true
         authGuardFallbackURL: '/loggedout', // url for unauthenticated users - to use in combination with canActivate feature on a route
@@ -48,6 +44,7 @@ import { MatPasswordStrengthComponent } from "@angular-material-extensions/passw
         enableEmailVerification: true, // default: true
         useRawUserCredential: false, // If set to true outputs the UserCredential object instead of firebase.User after login and signup - Default: false
       }),
+      HttpClientModule
   ],
   providers: [
     {

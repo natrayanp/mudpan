@@ -45,6 +45,7 @@ export enum AuthProvider {
 export class AuthProcessService implements ISignInProcess, ISignUpProcess {
   onSuccessEmitter: EventEmitter<any> = new EventEmitter<any>();
   onErrorEmitter: EventEmitter<any> = new EventEmitter<any>();
+  tabIndex = -1;
 
   // Useful to know about auth state even between reloads.
   // Replace emailConfirmationSent and emailToConfirm.
@@ -311,10 +312,12 @@ export class AuthProcessService implements ISignInProcess, ISignUpProcess {
 
   async handleSuccess(userCredential: UserCredential) {
 
+    console.log("inside handle success");
+
     if(this.config.useRawUserCredential) {
-      this.onSuccessEmitter.next(userCredential);
+      this.onSuccessEmitter.emit({user:userCredential,logintyp:this.getLoginType()});
     } else {
-      this.onSuccessEmitter.next(userCredential.user);
+      this.onSuccessEmitter.emit({user:userCredential.user,logintyp:this.getLoginType()});
     }
 
     if (this.config.enableFirestoreSync) {
@@ -377,8 +380,20 @@ export class AuthProcessService implements ISignInProcess, ISignUpProcess {
     }
   }
 
-  notifyError(error: any) {
-    this.onErrorEmitter.emit(error);
+  notifyError(error: any) {    
+    this.onErrorEmitter.emit({err:error,logintyp:this.getLoginType()});
     this.showErrorToast(error);
+    this.cleartabIndex();
+  }
+
+  cleartabIndex(){
+    this.tabIndex = -1;
+  }
+
+  getLoginType(): (string|null){
+    let lgtyp = null;
+    if(this.tabIndex != -1 ) lgtyp = 'login';
+    if(this.tabIndex === 1) lgtyp = 'register';
+    return lgtyp;
   }
 }

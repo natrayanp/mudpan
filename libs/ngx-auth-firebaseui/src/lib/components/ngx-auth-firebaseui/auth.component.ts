@@ -316,6 +316,7 @@ export class AuthComponent
   onTabChange(event: MatTabChangeEvent) {
     this.selectedTabChange.emit(event);
     this.tabIndex = event.index;
+    this.authProcess.tabIndex = this.tabIndex; //This is to know if we are in Register or Login
   }
 
   async signOut() {

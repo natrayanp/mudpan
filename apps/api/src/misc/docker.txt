@@ -1,0 +1,12 @@
+
+#### first time run ####
+docker network create --driver bridge pgnetwork
+docker run -v /home/nirudhi/projects/angularnest/db/postgres/:/var/lib/postgresql/data --hostname=postgresh --network=pgnetwork -p 5432:5432 --name postgres-test -e POSTGRES_PASSWORD=password123 -d postgres:latest
+docker run -v pgadmin4:/home/pgadmin/.pgadmin -p 8083:80 --name pgadm --network=pgnetwork  --link postgres-test:postgres-test --hostname=pgadmin -e 'PGADMIN_DEFAULT_EMAIL=user@domain.com' -e 'PGADMIN_DEFAULT_PASSWORD=SuperSecret' --rm -d dpage/pgadmin4
+
+### Second time onwards ###
+docker start postgres-test
+
+
+api_key=16)3W5i10$108kn5W16153162~t339j0'
+"AppKey": "16)3W5i10$108kn5W16153162~t339j0"

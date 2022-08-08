@@ -7,13 +7,17 @@ import { Pool } from 'pg';
 @Injectable()
 export class dbService {
     pool = null;
+    client = null;
     constructor(){ 
-        const constr = process.env.DATABASE_URL;       
-        this.pool = new Pool({constr,});
+        const constr = process.env.DATABASE_URL;     
+        console.log(constr)  ;
+        this.pool = new Pool({connectionString:constr,ssl:{rejectUnauthorized: false}});             
     }
 
     async qryExecute(qry:string,vals:any[]|null){
+        console.log(this.pool);
         const client = await this.pool.connect();
+        console.log(client);
         try {
                 if(vals === null || vals.length < 1)  {
                     client.query(qry, (err, res) => {

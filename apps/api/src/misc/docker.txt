@@ -10,3 +10,5 @@ docker start postgres-test
 
 api_key=16)3W5i10$108kn5W16153162~t339j0'
 "AppKey": "16)3W5i10$108kn5W16153162~t339j0"
+
+https://www.thisdot.co/blog/deploying-nx-workspace-based-angular-and-nestjs-apps-to-heroku

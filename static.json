@@ -5,7 +5,7 @@
     },
     "proxies": {
       "/api/": {
-        "origin": "https://https://mudpan-api.herokuapp.com/"
+        "origin": "https://mudpan-api.herokuapp.com/api/"
       }
     }
   }

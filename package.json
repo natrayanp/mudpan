@@ -2,9 +2,6 @@
   "name": "mudpan",
   "version": "0.0.0",
   "license": "MIT",
-  "engines": {
-    "node": "18.6.0"
-  },
   "scripts": {    
     "ng": "nx",
     "postinstall": "node ./decorate-angular-cli.js && ngcc --properties es2020 browser module main",

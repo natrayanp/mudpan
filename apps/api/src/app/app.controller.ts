@@ -17,7 +17,7 @@ export class AppController {
       const sess = body.API_Session;
       const qry = 'INSERT INTO mp.session VALUES ($1,CURRENT_DATE)';      
       this.db.qryExecute(qry,[body.API_Session]);
-
+      console.log(sess);
       await this.appService.breeze.generate_session(this.appService.appSecret,sess).then(function(resp){
             console.log("session generated");
         }).catch(function(err){
@@ -49,7 +49,6 @@ export class AppController {
     }
   
 
-
   @Get()
   //getData() {
     //return this.appService.getData();
@@ -58,4 +57,15 @@ export class AppController {
       return res.redirect('https://api.icicidirect.com/apiuser/login?api_key='+this.appService.appKey);
     }
   //}
+
+  @Get('funds')
+  get_funds() {    
+    this.appService.breeze.get_funds().then(function(resp){
+      console.log("Final Response");
+      console.log(resp);
+      return resp;
+      });
+  }
 }
+
+

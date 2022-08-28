@@ -18,12 +18,8 @@ export class AppController {
       const qry = 'INSERT INTO mp.session VALUES ($1,CURRENT_DATE)';      
       this.db.qryExecute(qry,[body.API_Session]);
       console.log(sess);
-      await this.appService.breeze.generate_session(this.appService.appSecret,sess).then(function(resp){
-            console.log("session generated");
-        }).catch(function(err){
-            console.log(err)
-        });
-      
+      await this.gs(sess);
+      console.log("session generated out");
 
       return res.redirect('http://localhost:4200/');
 
@@ -48,6 +44,14 @@ export class AppController {
    
     }
   
+    async gs(sess){
+      await this.appService.breeze.generate_session(this.appService.appSecret,sess).then(function(resp){
+        console.log("session generated");
+        console.log(this.appService.breeze.api_session);
+    }).catch(function(err){
+        console.log(err)
+    });
+    }
 
   @Get()
   //getData() {

@@ -24,6 +24,7 @@ export class AppService {
   }
 
 
+
   getData(): { message: string } {
     this.breeze.get_funds().then(function(resp){
       console.log("Final Response");

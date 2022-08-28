@@ -12,7 +12,7 @@ export class AppComponent {
 
 
   goToUrl(): void {
-    appCheckInstance$.
+//    appCheckInstance$.
   }
 
   constructor(public afAuth: AngularFireAuth) {

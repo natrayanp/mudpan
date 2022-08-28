@@ -12,12 +12,15 @@ export class AppService {
   constructor() {     
     this.appKey = process.env.APPKEY;    
     this.appSecret = process.env.APPSECRET;
+    console.log("reading from env");
+    console.log(process.env.APPKEY);
     this.breeze = new BreezeConnect({"appKey":this.appKey});    
-    this.breeze.generate_session(this.appSecret,"your_api_session").then(function(resp){
+    /*this.breeze.generate_session(this.appSecret,"your_api_session").then(function(resp){
             console.log("session generated");
         }).catch(function(err){
             console.log(err)
         });
+      */
   }
 
 

@@ -9,6 +9,12 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 export class AppComponent {
   title = 'fe';
   onscreenload = true;
+
+
+  goToUrl(): void {
+    appCheckInstance$.
+  }
+
   constructor(public afAuth: AngularFireAuth) {
     this.afAuth.onAuthStateChanged( () => {      
     

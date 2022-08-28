@@ -1,3 +1,7 @@
+
+
+   <button type="button" (click)="goToUrl()">Click me!</button>
+
 <!--
 <mudpan-nx-welcome></mudpan-nx-welcome> <router-outlet></router-outlet>
 https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx/introduction/11-adding-ngrx-to-nx-app
@@ -20,14 +24,18 @@ https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx
 -->
 
 
+<!--
+
 <div *ngIf="afAuth.authState| async; then authenticated else none">
 
 </div>
 
 <ng-template #authenticated>
-  <mat-card *ngIf="afAuth.user | async as user">
+  <mat-card *ngIf="afAuth.user | async as user">-->
     <!--<form [formGroup]="updateFormGroup" >-->
     <!--card header-->
+
+     <!--
     <mat-card-header fxLayout="column" fxLayoutAlign="center center">
       {{ user | json }}
       <p>Nat hearder</p>
@@ -59,7 +67,7 @@ https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx
       </div>
     </div>
   </div>
-
+-->
 
   <!--
 
@@ -70,6 +78,7 @@ https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx
 
     </mat-card-content>
   </mat-card>
-   -->
+
 </ng-template>
 
+   -->

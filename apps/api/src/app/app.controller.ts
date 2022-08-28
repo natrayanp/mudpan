@@ -47,7 +47,8 @@ export class AppController {
   //getData() {
     //return this.appService.getData();
     redirect(@Res() res) {      
-      return res.redirect('https://api.icicidirect.com/apiuser/login?api_key=16)3W5i10$108kn5W16153162~t339j0');
+      console.log(this.appService.appKey);
+      return res.redirect('https://api.icicidirect.com/apiuser/login?api_key='+this.appService.appKey);
     }
   //}
 }

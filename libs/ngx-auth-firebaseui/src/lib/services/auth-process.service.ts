@@ -392,6 +392,7 @@ export class AuthProcessService implements ISignInProcess, ISignUpProcess {
 
   getLoginType(): (string|null){
     let lgtyp = null;
+    console.log(this.tabIndex);
     if(this.tabIndex != -1 ) lgtyp = 'login';
     if(this.tabIndex === 1) lgtyp = 'register';
     return lgtyp;

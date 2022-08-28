@@ -30,6 +30,7 @@
 
     <!--card content-->
     <mat-card-content *ngIf="editMode; then edit else readonly">
+      
     </mat-card-content>
 
     <ng-template #edit>
@@ -107,7 +108,7 @@
           {{editButtonText}}
         </button>
       </div>
-
+      <p>Nat to test</p>
       <!--name-->
       <mat-form-field [appearance]="appearance" class="full-width">
         <mat-label>{{nameText}}</mat-label>

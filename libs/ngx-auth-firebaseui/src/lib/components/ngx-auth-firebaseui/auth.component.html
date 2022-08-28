@@ -25,7 +25,7 @@
     </ngx-auth-firebaseui-email-confirmation>
   </div>
 
-  <ng-template #signedInUser>
+  <ng-template #signedInUser>    
     <div class="signed-in-container" fxLayout="column" fxLayoutAlign="center center">
       <img *ngIf="user?.photoURL; else noPhoto" [src]="user?.photoURL" class="account-circle">
       <ng-template #noPhoto>

@@ -1,14 +1,14 @@
 <!--
 <mudpan-nx-welcome></mudpan-nx-welcome> <router-outlet></router-outlet>
 https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx/introduction/11-adding-ngrx-to-nx-app
--->
+
 <div fxLayout="column" fxLayoutAlign="center" style=" height: 100vh;" >
   <div fxLayout="row" fxLayoutAlign="center" fxFlexFill >
     <div  fxFlex="1 1 32%" fxFlex.lt-lg="1 1 100%" fxFlexAlign="center" style="width: 100%;">
       <mat-card>
         <!--
         <mat-card-title> <mat-toolbar color="primary"><span fxFlex></span><span>Authenticate</span><span fxFlex></span></mat-toolbar>	</mat-card-title>	
-        -->
+        -->        <!--
           <ngx-auth-firebaseui 
                 (onSuccess)="printUser($event)"
                 (onError)="printError($event)">
@@ -17,3 +17,59 @@ https://duncanhunter.gitbook.io/enterprise-angular-applications-with-ngrx-and-nx
     </div>
   </div>
 </div>
+-->
+
+
+<div *ngIf="afAuth.authState| async; then authenticated else none">
+
+</div>
+
+<ng-template #authenticated>
+  <mat-card *ngIf="afAuth.user | async as user">
+    <!--<form [formGroup]="updateFormGroup" >-->
+    <!--card header-->
+    <mat-card-header fxLayout="column" fxLayoutAlign="center center">
+      {{ user | json }}
+      <p>Nat hearder</p>
+
+    </mat-card-header>
+
+
+  </mat-card>
+
+</ng-template>
+
+
+<ng-template #none>
+
+  
+
+  <div fxLayout="column" fxLayoutAlign="center" style=" height: 100vh;" >
+    <div fxLayout="row" fxLayoutAlign="center" fxFlexFill >
+      <div  fxFlex="1 1 32%" fxFlex.lt-lg="1 1 100%" fxFlexAlign="center" style="width: 100%;">
+        <mat-card>
+     
+
+     
+            <ngx-auth-firebaseui 
+                  (onSuccess)="printUser($event)"
+                  (onError)="printError($event)">
+            </ngx-auth-firebaseui>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+
+  <!--
+
+ 
+  <mat-card class="none-card" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card-content fxLayout="row" fxLayoutAlign="center center">
+      <mat-icon color="accent">warning</mat-icon>
+
+    </mat-card-content>
+  </mat-card>
+   -->
+</ng-template>
+

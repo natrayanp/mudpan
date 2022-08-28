@@ -233,7 +233,8 @@ export class AuthComponent
         this.goBackURL = '';
         this.privacyPolicyUrl = '';
         this.tosUrl = '';
-        this.tabIndex = null;
+        this.tabIndex = 0;
+        this.authProcess.tabIndex = this.tabIndex; 
         this.appearance = 'outline';
         
         if (this.config == {}) {

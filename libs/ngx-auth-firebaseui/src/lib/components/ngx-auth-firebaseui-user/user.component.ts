@@ -83,6 +83,7 @@ export class UserComponent {
     this.updateNameFormControl = new FormControl('');
     this.updateEmailFormControl = new FormControl('');
     this.updatePhoneNumberFormControl = new FormControl('');
+    console.log("inside user component");
   }
 
   changeEditMode() {

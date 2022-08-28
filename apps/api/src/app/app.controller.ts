@@ -9,14 +9,21 @@ export class AppController {
   constructor(private readonly appService: AppService, private readonly httpsr: httpService, private readonly db: dbService,) {}
 
   @Post()
-  create(@Res() res,@Body() body) {    
+  async create(@Res() res,@Body() body) {    
     //return 'This action adds a new cat';
       console.log("here in post");
       console.log(body);
       //let sestkn = '';
-
+      const sess = body.API_Session;
       const qry = 'INSERT INTO mp.session VALUES ($1,CURRENT_DATE)';      
       this.db.qryExecute(qry,[body.API_Session]);
+
+      await this.appService.breeze.generate_session(this.appService.appSecret,sess).then(function(resp){
+            console.log("session generated");
+        }).catch(function(err){
+            console.log(err)
+        });
+      
 
       return res.redirect('http://localhost:4200/');
 

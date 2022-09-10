@@ -46,8 +46,7 @@ export class AppController {
   
     async gs(sess){
       await this.appService.breeze.generate_session(this.appService.appSecret,sess).then(function(resp){
-        console.log("session generated");
-        console.log(this.appService.breeze.api_session);
+        console.log("session generated");        
     }).catch(function(err){
         console.log(err)
     });
@@ -70,6 +69,50 @@ export class AppController {
       return resp;
       });
   }
+
+  @Get('tradelist')
+  get_trade(){
+    this.appService.breeze.get_trade_list(
+      {
+          from_date:"2022-08-25T06:00:00.000Z",
+          to_date:"2022-08-28T06:00:00.000Z",
+          exchange_code:"NSE",
+          product_type:"",
+          action:"",
+          stock_code:""
+      }
+  ).then(function(resp){console.log(resp)});
+
+  }
+
+  @Get('tradedetail')
+  get_trade_detail(){
+    this.appService.breeze.get_trade_detail(
+      {
+          exchange_code:"NSE",
+          order_id:"20220826N400043393"
+      }
+  ).then(function(resp){console.log(resp)});
+
+  }
+  
+
+  @Get('pfholdings')
+  get_pf_holdings(){
+    this.appService.breeze.get_portfolio_holdings(
+      {
+          exchange_code:"NSE"          
+      }
+  ).then(function(resp){console.log(resp)});
+
+  }
+
+  @Get('pfposition')
+  get_pf_position(){
+    this.appService.breeze.get_portfolio_positions().then(function(resp){console.log(resp)});
+
+  }
+
 }
 
 

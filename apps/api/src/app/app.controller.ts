@@ -57,7 +57,7 @@ export class AppController {
     //return this.appService.getData();
     redirect(@Res() res) {      
       console.log(this.appService.appKey);
-      return res.redirect('https://api.icicidirect.com/apiuser/login?api_key='+this.appService.appKey);
+      return res.redirect('https://api.icicidirect.com/apiuser/login?api_key='+encodeURI(this.appService.appKey));
     }
   //}
 
@@ -110,7 +110,6 @@ export class AppController {
   @Get('pfposition')
   get_pf_position(){
     this.appService.breeze.get_portfolio_positions().then(function(resp){console.log(resp)});
-
   }
 
 }

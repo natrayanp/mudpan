@@ -9,7 +9,22 @@ import { AngularFireAuth } from "@angular/fire/compat/auth";
 export class AppComponent {
   title = 'fe';
   onscreenload = true;
+  opened = true;
+  snsz = 250;
 
+  navtoggle(){
+    if(this.snsz === 250){            
+      this.opened = false;
+      this.snsz = 50;         
+    } else if(this.snsz === 50){
+      this.opened = true;
+      this.snsz = 0;
+    } else if(!this.opened){
+      this.opened = false;
+      this.snsz = 250;
+    }
+    setTimeout(() => this.opened = !this.opened, 1);  
+  }
 
   goToUrl(): void {
 //    appCheckInstance$.
